@@ -1,58 +1,64 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SIMRS-Lite (Sistem Informasi Manajemen Rumah Sakit)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+SIMRS-Lite adalah prototipe aplikasi Manajemen Rumah Sakit berbasis web yang fokus pada efisiensi alur pasien, mulai dari pendaftaran mandiri hingga pemeriksaan medis digital. Proyek ini dibangun untuk mendemonstrasikan penerapan **Role-Based Access Control (RBAC)** dan integritas data pada sistem informasi kesehatan.
 
-## About Laravel
+## 🚀 Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Pendaftaran Pasien Online:** Pasien dapat mendaftar berobat secara mandiri dan mendapatkan nomor antrean secara real-time.
+- **Manajemen Antrean Dokter:** Dokter memiliki dashboard khusus untuk melihat daftar antrean pasien yang harus diperiksa hari ini.
+- **Electronic Medical Record (EMR):** Input hasil pemeriksaan, diagnosa, dan tindakan medis yang tersimpan secara terpusat.
+- **RBAC (Role-Based Access Control):** Keamanan akses menggunakan Spatie Permission untuk membedakan hak akses Admin, Dokter, Pasien, dan Apoteker.
+- **Format Antrean Cantik:** Penomoran otomatis (001, 002, dst) yang mempermudah identifikasi di poli.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend:** [Laravel 11](https://laravel.com) (PHP 8.3)
+- **Frontend:** [Tailwind CSS](https://tailwindcss.com) & [Blade Template](https://laravel.com/docs/11.x/blade)
+- **Database:** SQLite (Lightweight & Portable)
+- **Security:** [Spatie Laravel-Permission](https://spatie.be/docs/laravel-permission)
+- **Starter Kit:** [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)
 
-## Learning Laravel
+## 🔑 Akun Demo (Default Credentials)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Gunakan akun berikut untuk melakukan pengujian fungsionalitas sistem:
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Role | Email | Password | Kegunaan |
+| :--- | :--- | :--- | :--- |
+| **Pasien** | `pasien@simrs.com` | `password` | Simulasi daftar berobat online. |
+| **Dokter** | `dokter@simrs.com` | `password` | Simulasi input diagnosa pasien. |
+| **Admin** | `admin@simrs.com` | `password` | Mengelola data master & monitoring. |
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🔗 Panduan Cek Link (Endpoint)
 
-## Agentic Development
+Setelah login, Anda dapat mengakses fitur utama melalui sidebar atau link berikut:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+- **Dashboard Utama:** `http://localhost:8000/dashboard`
+- **Form Daftar Pasien:** `http://localhost:8000/pendaftaran/create`
+- **Tabel Antrean (Admin):** `http://localhost:8000/pendaftaran`
+- **Antrean Pasien (Dokter):** `http://localhost:8000/pemeriksaan`
 
-```bash
-composer require laravel/boost --dev
+## ⚙️ Cara Instalasi
 
-php artisan boost:install
-```
+1. **Clone Repositori:**
+   ```bash
+   git clone [https://github.com/RayanHakim/SIMRS.git](https://github.com/username-kamu/SIMRS.git)
+   cd SIMRS
+Instalasi Dependensi:
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Bash
+composer install
+npm install && npm run build
+Setup Environment:
 
-## Contributing
+Bash
+cp .env.example .env
+php artisan key:generate
+Migrasi & Seeding (PENTING):
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Bash
+# Perintah ini akan mereset database dan mengisi akun demo
+php artisan migrate:fresh --seed
+Jalankan Aplikasi:
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Bash
+php artisan serve
